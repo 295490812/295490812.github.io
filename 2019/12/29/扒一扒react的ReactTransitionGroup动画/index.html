@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>扒一扒react的ReactTransitionGroup动画 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="React 可以被用来实现强大的动画效果。参见 React Transition Group、React Motion 以及 React Spring 等示例。 1.ReactTransitionGroup动画react-transition-group 一个官网提供的动画过度库。 12345# npmnpm install react-transition-group --save# yarny">
+<meta property="og:type" content="article">
+<meta property="og:title" content="扒一扒react的ReactTransitionGroup动画">
+<meta property="og:url" content="http://yoursite.com/2019/12/29/%E6%89%92%E4%B8%80%E6%89%92react%E7%9A%84ReactTransitionGroup%E5%8A%A8%E7%94%BB/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="React 可以被用来实现强大的动画效果。参见 React Transition Group、React Motion 以及 React Spring 等示例。 1.ReactTransitionGroup动画react-transition-group 一个官网提供的动画过度库。 12345# npmnpm install react-transition-group --save# yarny">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-12-29T03:02:16.000Z">
+<meta property="article:modified_time" content="2020-03-29T03:09:57.291Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-扒一扒react的ReactTransitionGroup动画" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/29/%E6%89%92%E4%B8%80%E6%89%92react%E7%9A%84ReactTransitionGroup%E5%8A%A8%E7%94%BB/" class="article-date">
+  <time datetime="2019-12-29T03:02:16.000Z" itemprop="datePublished">2019-12-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/react/">react</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      扒一扒react的ReactTransitionGroup动画
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React 可以被用来实现强大的动画效果。参见 <a target="_blank" rel="noopener" href="https://reactcommunity.org/react-transition-group/">React Transition Group</a>、<a target="_blank" rel="noopener" href="https://github.com/chenglou/react-motion">React Motion</a> 以及 <a target="_blank" rel="noopener" href="https://github.com/react-spring/react-spring">React Spring</a> 等示例。</p>
+<h1 id="1-ReactTransitionGroup动画"><a href="#1-ReactTransitionGroup动画" class="headerlink" title="1.ReactTransitionGroup动画"></a>1.ReactTransitionGroup动画</h1><p>react-transition-group 一个官网提供的动画过度库。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># npm</span><br><span class="line">npm install react-transition-group --save</span><br><span class="line"></span><br><span class="line"># yarn</span><br><span class="line">yarn add react-transition-group</span><br></pre></td></tr></table></figure>
+
+<p>而官方提供的四个组建<code>Transition</code>，<code>CSSTransition</code>，<code>SwitchTransiton</code>，<code>TransitonGroup</code>。</p>
+<h2 id="1-1-Transition"><a href="#1-1-Transition" class="headerlink" title="1.1 Transition"></a>1.1 Transition</h2><p>过渡组件(Transiton)允许您用一个简单的声明性API描述随着时间的推移从一个组件状态到另一个组件状态的转换。最常用的是用来动画一个组件的安装和卸载，但也可以用来描述在适当的过渡状态。默认情况下，该组件不会更改其呈现的组件的行为，它只跟踪组件的“进入”和“退出”的状态。由你来为这些状态定义效果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; Transition &#125; <span class="keyword">from</span> <span class="string">&#x27;react-transition-group&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Fade</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="built_in">super</span>(props);</span><br><span class="line">    &#125;</span><br><span class="line">    done = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;结束了&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    addEndListener = <span class="function">(<span class="params">node</span>) =&gt;</span> &#123; <span class="comment">//原生时间transition运动的事件</span></span><br><span class="line">        node.addEventListener(<span class="string">&#x27;transitionend&#x27;</span>, <span class="built_in">this</span>.done, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 三个进入状态的事件，可以做你想做的事情</span></span><br><span class="line">    onEnter = <span class="function">(<span class="params">node, isAppearing</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(isAppearing, <span class="string">&#x27;onEnter&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    onEntering = <span class="function">(<span class="params">node, isAppearing</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(isAppearing, <span class="string">&#x27;onEntering&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    onEntered = <span class="function">(<span class="params">node, isAppearing</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(isAppearing, <span class="string">&#x27;onEntered&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 三个退出的状态的事件</span></span><br><span class="line">    onExit = <span class="function">(<span class="params">node</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;onExit&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    onExiting = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;onExiting&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    onExited = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;onExited&#x27;</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> &#123; <span class="attr">in</span>: inProp &#125; = <span class="built_in">this</span>.props;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> defaultStyle = &#123;</span><br><span class="line">            transition: <span class="string">`transform <span class="subst">$&#123;<span class="number">300</span>&#125;</span>ms ease-in-out, opacity <span class="subst">$&#123;<span class="number">300</span>&#125;</span>ms ease-in-out`</span>,</span><br><span class="line">            transform: <span class="string">&#x27;translateX(100px)&#x27;</span>,</span><br><span class="line">            opacity: <span class="string">&#x27;0&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> transitionStyles = &#123;</span><br><span class="line">            entering: &#123; <span class="attr">transform</span>: <span class="string">&#x27;translateX(100px)&#x27;</span>, <span class="attr">opacity</span>: <span class="string">&#x27;0&#x27;</span> &#125;,</span><br><span class="line">            entered: &#123; <span class="attr">transform</span>: <span class="string">&#x27;translateX(0px)&#x27;</span>, <span class="attr">opacity</span>: <span class="string">&#x27;1&#x27;</span> &#125;,</span><br><span class="line">            exiting: &#123; <span class="attr">transform</span>: <span class="string">&#x27;translateX(0px)&#x27;</span>, <span class="attr">opacity</span>: <span class="string">&#x27;1&#x27;</span> &#125;,</span><br><span class="line">            exited: &#123; <span class="attr">transform</span>: <span class="string">&#x27;translateX(100px)&#x27;</span>, <span class="attr">opacity</span>: <span class="string">&#x27;0&#x27;</span> &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">const</span> duration = &#123;</span><br><span class="line">            enter: <span class="number">300</span>,</span><br><span class="line">            exit: <span class="number">300</span>,</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 上面的都是基本参数，样式的转变以及时间的设定，具体的可以看官网文档</span></span><br><span class="line">        <span class="comment">// 样式也可以写成className 例如&lt;MyComponent className=&#123;`fade fade-$&#123;status&#125;`&#125; /&gt;</span></span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;Transition</span><br><span class="line">                onEnter=&#123;<span class="built_in">this</span>.onEnter&#125;</span><br><span class="line">                onEntering=&#123;<span class="built_in">this</span>.onEntering&#125;</span><br><span class="line">                onEntered=&#123;<span class="built_in">this</span>.onEntered&#125;</span><br><span class="line"></span><br><span class="line">                onExit=&#123;<span class="built_in">this</span>.onExit&#125;</span><br><span class="line">                onExiting=&#123;<span class="built_in">this</span>.onExiting&#125;</span><br><span class="line">                onExited=&#123;<span class="built_in">this</span>.onExited&#125;</span><br><span class="line"></span><br><span class="line">                addEndListener=&#123;<span class="built_in">this</span>.addEndListener&#125;</span><br><span class="line">                <span class="keyword">in</span>=&#123;inProp&#125;</span><br><span class="line">                unmountOnExit=&#123;<span class="literal">false</span>&#125; <span class="comment">// 为true 代表退出的时候移除dom</span></span><br><span class="line">                appear=&#123;<span class="literal">true</span>&#125;     <span class="comment">// 为true 初始动画</span></span><br><span class="line">                timeout=&#123;duration&#125;</span><br><span class="line">            &gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    state =&gt; &#123;</span><br><span class="line">                        <span class="built_in">console</span>.log(state, <span class="string">&#x27;###&#x27;</span>) <span class="comment">//你可以很直观的看到组件加载和卸载时候的状态</span></span><br><span class="line">                        <span class="keyword">return</span> (</span><br><span class="line">                            &lt;div style=&#123;&#123;</span><br><span class="line">                                ...defaultStyle,</span><br><span class="line">                                ...transitionStyles[state]</span><br><span class="line">                            &#125;&#125;&gt;</span><br><span class="line">                                &#123;<span class="built_in">this</span>.props.children&#125;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                        )</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &lt;/Transition&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> Fade <span class="keyword">from</span> <span class="string">&#x27;./Fade.js&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Dnd</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    state = &#123;</span><br><span class="line">        flag:<span class="literal">true</span></span><br><span class="line">    &#125;</span><br><span class="line">    handle = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.setState(<span class="function"><span class="params">prev</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                flag: !prev.flag</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="function">() =&gt;</span> <span class="built_in">this</span>.handle()&#125;&gt;点击transition&lt;/button&gt;</span><br><span class="line">                &lt;Fade <span class="keyword">in</span>=&#123;<span class="built_in">this</span>.state.flag&#125;&gt;</span><br><span class="line">                    &lt;div&gt;动画&lt;/div&gt;</span><br><span class="line">                &lt;/Fade&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-CSSTransition"><a href="#1-2-CSSTransition" class="headerlink" title="1.2 CSSTransition"></a>1.2 CSSTransition</h2><p>此组件是在转换的出现、进入、退出阶段应用一对类名(也就是className)，靠这个来激活CSS动画。所以参数和平时的className不同，参数为：<code>classNames</code><br>参数：（主要）in, timeout, unmountOnExit, classNames, 用法同Transition。看如下例子：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./star.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; CSSTransition &#125; <span class="keyword">from</span> <span class="string">&#x27;react-transition-group&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Star</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    state = &#123;</span><br><span class="line">        star: <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleStar = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">this</span>.setState(<span class="function"><span class="params">prev</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                star:!prev.star</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;()</span>=&gt;</span>&#123;this.handleStar()&#125;&#125;&gt;start<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">            &lt;CSSTransition</span><br><span class="line">                in=&#123;this.state.star&#125;</span><br><span class="line">                timeout=&#123;300&#125;</span><br><span class="line">                classNames=&quot;star&quot;</span><br><span class="line">                unmountOnExit  //为true 代表退出的时候移除dom</span><br><span class="line">            &gt;</span><br><span class="line">                &#123;/*指定默认样式*/&#125;   </span><br><span class="line">                &lt;div className=&quot;star&quot;&gt;星星&lt;/div&gt;</span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">CSSTransition</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.star &#123;</span><br><span class="line">    display: inline-block;</span><br><span class="line">    margin-left: <span class="number">0.5</span>rem;</span><br><span class="line">    transform: scale(<span class="number">1.25</span>);</span><br><span class="line">&#125;</span><br><span class="line">.star-enter &#123;</span><br><span class="line">    opacity: <span class="number">0.01</span>;</span><br><span class="line">    transform: translateY(<span class="number">-100</span>%) scale(<span class="number">0.75</span>);</span><br><span class="line">&#125;</span><br><span class="line">.star-enter-active &#123;</span><br><span class="line">    opacity: <span class="number">1</span>;</span><br><span class="line">    transform: translateY(<span class="number">0</span>%) scale(<span class="number">1.25</span>);</span><br><span class="line">    transition: all <span class="number">300</span>ms ease-out;</span><br><span class="line">&#125;</span><br><span class="line">.star-exit &#123;</span><br><span class="line">    opacity: <span class="number">1</span>;</span><br><span class="line">    transform: scale(<span class="number">1.25</span>);</span><br><span class="line">&#125;</span><br><span class="line">.star-exit-active &#123;</span><br><span class="line">    opacity: <span class="number">0</span>;</span><br><span class="line">    transform: scale(<span class="number">4</span>);</span><br><span class="line">    transition: all <span class="number">300</span>ms ease-<span class="keyword">in</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-SwitchTransition"><a href="#1-3-SwitchTransition" class="headerlink" title="1.3 SwitchTransition"></a>1.3 SwitchTransition</h2><p>受vue过渡模式启发的过渡组件， 当您要控制状态转换之间的渲染时，可以使用它。SwitchTransition不提供任何形式的动画，具体的动画取决与你包裹的Transition || CSSTransition的动画。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; SwitchTransition, CSSTransition &#125; <span class="keyword">from</span> <span class="string">&#x27;react-transition-group&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./switch.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">SwitchAnim</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="built_in">super</span>()</span><br><span class="line"></span><br><span class="line">        <span class="built_in">this</span>.state = &#123;</span><br><span class="line">            flag: <span class="literal">false</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    toggle = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.setState(<span class="function">(<span class="params">prev</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                flag: !prev.flag</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.toggle&#125;</span>&gt;</span>点我切换组件<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">            &lt;SwitchTransition&gt;</span><br><span class="line">                &lt;CSSTransition</span><br><span class="line">                    key=&#123;this.state.flag ? &quot;A&quot; : &quot;B&quot;&#125;</span><br><span class="line">                    classNames=&quot;fade&quot;</span><br><span class="line">                    timeout=&#123;300&#125;&gt;</span><br><span class="line">                    &#123;this.state.flag ? &lt;div&gt;AAAA&lt;/div&gt; : &lt;div&gt;BBBB&lt;/div&gt;&#125;</span><br><span class="line">                &lt;/CSSTransition&gt;</span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">SwitchTransition</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.fade-enter &#123;</span><br><span class="line">    opacity: <span class="number">0.01</span>;  </span><br><span class="line">&#125;</span><br><span class="line">.fade-enter-active &#123;</span><br><span class="line">    opacity: <span class="number">1</span>;</span><br><span class="line">    transition: opacity <span class="number">500</span>ms ease-<span class="keyword">in</span>;</span><br><span class="line">&#125;</span><br><span class="line">.fade-exit &#123;</span><br><span class="line">    opacity: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">.fade-exit-active &#123;</span><br><span class="line">    opacity: <span class="number">0.01</span>;</span><br><span class="line">    transition: opacity <span class="number">500</span>ms ease-<span class="keyword">in</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-4-TransitionGroup"><a href="#1-4-TransitionGroup" class="headerlink" title="1.4 TransitionGroup"></a>1.4 TransitionGroup</h2><p>一看group就知道肯定是列表形态的动画了！但是看了官网后知道，TransitionGroup不提供任何形式的动画，具体的动画取决与你包裹的Transition || CSSTransition的动画，所以你可以在列表里面做出不同类型的动画出来。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; TransitionGroup, CSSTransition &#125; <span class="keyword">from</span> <span class="string">&#x27;react-transition-group&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./switch.css&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ListAnim</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="built_in">super</span>()</span><br><span class="line">        <span class="built_in">this</span>.state = &#123;</span><br><span class="line">            items: [</span><br><span class="line">                &#123; <span class="attr">id</span>: <span class="number">1</span>, <span class="attr">text</span>: <span class="string">&#x27;Buy eggs&#x27;</span> &#125;,  <span class="comment">//0</span></span><br><span class="line">                &#123; <span class="attr">id</span>: <span class="number">2</span>, <span class="attr">text</span>: <span class="string">&#x27;Pay bills&#x27;</span> &#125;,  <span class="comment">//1</span></span><br><span class="line">                &#123; <span class="attr">id</span>: <span class="number">3</span>, <span class="attr">text</span>: <span class="string">&#x27;Invite friends over&#x27;</span> &#125;, <span class="comment">//2</span></span><br><span class="line">                &#123; <span class="attr">id</span>: <span class="number">4</span>, <span class="attr">text</span>: <span class="string">&#x27;Fix the TV&#x27;</span> &#125;,  <span class="comment">//3</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleAdd = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> items = <span class="built_in">this</span>.state.items;</span><br><span class="line">        items.unshift(&#123; <span class="attr">id</span>: items.length + <span class="number">1</span>, <span class="attr">text</span>: <span class="string">&quot;张三&quot;</span> &#125;);</span><br><span class="line">        <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">            items: [...items]</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handleRemove = <span class="function">(<span class="params">id</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.setState(<span class="function"><span class="params">prev</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;</span><br><span class="line">                items: prev.items.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.id != id)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">const</span> items = <span class="built_in">this</span>.state.items;</span><br><span class="line">        <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line">            &lt;TransitionGroup&gt;</span><br><span class="line">                &#123;</span><br><span class="line">                    items.map(item =&gt; (</span><br><span class="line">                        &lt;CSSTransition</span><br><span class="line">                            key=&#123;item.id&#125;  //这边的key一定要能唯一标识当前元素</span><br><span class="line">                            timeout=&#123;300&#125;</span><br><span class="line">                            classNames=&quot;fade&quot;</span><br><span class="line">                        &gt;</span><br><span class="line">                            &lt;div style=&#123;&#123; background: &quot;red&quot; &#125;&#125;&gt;</span><br><span class="line">                                &#123;item.text&#125;</span><br><span class="line">                                &lt;button onClick=&#123;() =&gt; this.handleRemove(item.id)&#125;&gt;&amp;times;&lt;/button&gt;</span><br><span class="line">                            &lt;/div&gt;</span><br><span class="line">                        &lt;/CSSTransition&gt;</span><br><span class="line">                    ))</span><br><span class="line">                &#125;</span><br><span class="line"><span class="xml">            <span class="tag">&lt;/<span class="name">TransitionGroup</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleAdd&#125;</span>&gt;</span>添加元素<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.fade-enter &#123;</span><br><span class="line">    opacity: <span class="number">0.01</span>;  </span><br><span class="line">&#125;</span><br><span class="line">.fade-enter-active &#123;</span><br><span class="line">    opacity: <span class="number">1</span>;</span><br><span class="line">    transition: opacity <span class="number">500</span>ms ease-<span class="keyword">in</span>;</span><br><span class="line">&#125;</span><br><span class="line">.fade-exit &#123;</span><br><span class="line">    opacity: <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">.fade-exit-active &#123;</span><br><span class="line">    opacity: <span class="number">0.01</span>;</span><br><span class="line">    transition: opacity <span class="number">500</span>ms ease-<span class="keyword">in</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/12/29/%E6%89%92%E4%B8%80%E6%89%92react%E7%9A%84ReactTransitionGroup%E5%8A%A8%E7%94%BB/" data-id="ckdzwmbdm00120wv03gbzbtjh" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/01/02/create-react-app%E8%84%9A%E6%89%8B%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          create-react-app脚手架的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/11/29/react-spring%E5%8A%A8%E7%94%BB%E5%BA%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">react-spring动画库</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/hhh/">hhh</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAreact-hooks/">深入浅出react hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/22/nextJS/">nextJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

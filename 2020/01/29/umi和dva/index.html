@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>umi和dva | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.umihttps:&#x2F;&#x2F;umijs.org&#x2F;zh&#x2F;guide&#x2F; 一套可插拔的企业级 react 应用框架，由dva作者 sorrycc 完成，它既是一个框架也是一个工具。他在Umi中引入了 UI 工具 antd，打包工具 roadhog，路由 react-router和状态管理器 dva，做到了可插拔机制。通过约定、自动生成和解析代码等方式来辅助开发，减少开发者要写的代码量。 123$ yarn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="umi和dva">
+<meta property="og:url" content="http://yoursite.com/2020/01/29/umi%E5%92%8Cdva/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.umihttps:&#x2F;&#x2F;umijs.org&#x2F;zh&#x2F;guide&#x2F; 一套可插拔的企业级 react 应用框架，由dva作者 sorrycc 完成，它既是一个框架也是一个工具。他在Umi中引入了 UI 工具 antd，打包工具 roadhog，路由 react-router和状态管理器 dva，做到了可插拔机制。通过约定、自动生成和解析代码等方式来辅助开发，减少开发者要写的代码量。 123$ yarn">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/umi%E5%92%8Cdva/umi%E5%92%8Cdva/1573453772780.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/umi%E5%92%8Cdva/umi%E5%92%8Cdva/1573453795170.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/umi%E5%92%8Cdva/umi%E5%92%8Cdva/1573453872519.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/umi%E5%92%8Cdva/umi%E5%92%8Cdva/1573457953533.png">
+<meta property="og:image" content="http://yoursite.com/2020/01/29/umi%E5%92%8Cdva/umi%E5%92%8Cdva%5CGQJeDDeUCSTRMMg.gif">
+<meta property="article:published_time" content="2020-01-29T04:01:56.000Z">
+<meta property="article:modified_time" content="2020-03-29T04:26:47.368Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/01/29/umi%E5%92%8Cdva/umi%E5%92%8Cdva/1573453772780.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-umi和dva" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/29/umi%E5%92%8Cdva/" class="article-date">
+  <time datetime="2020-01-29T04:01:56.000Z" itemprop="datePublished">2020-01-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/react/">react</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      umi和dva
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-umi"><a href="#1-umi" class="headerlink" title="1.umi"></a>1.umi</h2><p><a target="_blank" rel="noopener" href="https://umijs.org/zh/guide/">https://umijs.org/zh/guide/</a></p>
+<p>一套可插拔的企业级 react 应用框架，由dva作者 sorrycc 完成，它既是一个框架也是一个工具。他在Umi中引入了 UI 工具 antd，打包工具 roadhog，路由 react-router和状态管理器 dva，做到了可插拔机制。通过约定、自动生成和解析代码等方式来辅助开发，减少开发者要写的代码量。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ yarn <span class="built_in">global</span> add umi</span><br><span class="line">$ umi -v</span><br><span class="line"><span class="number">2.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir myapp &amp;&amp; cd myapp</span><br><span class="line">$ yarn create umi</span><br></pre></td></tr></table></figure>
+
+<p><img src="umi%E5%92%8Cdva/1573453772780.png" alt="1573453772780"></p>
+<p><img src="umi%E5%92%8Cdva/1573453795170.png" alt="1573453795170">nextJS</p>
+<p>选上 <code>antd</code> 和 <code>dva</code>，然后回车确认</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//然后安装依赖</span></span><br><span class="line"></span><br><span class="line">$ yarn</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//然后启动应用</span></span><br><span class="line"></span><br><span class="line">$ yarn start</span><br></pre></td></tr></table></figure>
+
+<p>几秒钟后，你会看到以下输出，</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">DONE  Compiled successfully <span class="keyword">in</span> <span class="number">212</span>ms</span><br><span class="line"></span><br><span class="line"> App running at:</span><br><span class="line"> - Local:   http:<span class="comment">//localhost:8000/</span></span><br><span class="line"> - Network: http:<span class="comment">//&#123;&#123; YourIP &#125;&#125;:8000/</span></span><br></pre></td></tr></table></figure>
+
+<p>在浏览器里打开 <a target="_blank" rel="noopener" href="http://localhost:8000/">http://localhost:8000</a>，你会看到 umi 的欢迎界面。</p>
+<p><img src="umi%E5%92%8Cdva/1573453872519.png" alt="img"></p>
+<h2 id="2-使用-antd"><a href="#2-使用-antd" class="headerlink" title="2.使用 antd"></a>2.使用 antd</h2><p>前面选择 antd 之后，会自动处理 antd 的依赖以及按需加载。你可以检查 <code>.umirc.js</code> 里的配置，确保 antd 已开启。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ref: https://umijs.org/config/</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="comment">// ref: https://umijs.org/plugin/umi-plugin-react.html</span></span><br><span class="line">    [<span class="string">&#x27;umi-plugin-react&#x27;</span>, &#123;</span><br><span class="line">      antd: <span class="literal">true</span>,</span><br><span class="line">      dva: <span class="literal">true</span>,</span><br><span class="line">    &#125;],</span><br><span class="line">  ],</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>而如果要使用固定版本的 antd，你可以在项目里安装额外的 antd 依赖，package.json 里声明的 antd 依赖会被优先使用。</p>
+</blockquote>
+<h2 id="3-修改配置文件"><a href="#3-修改配置文件" class="headerlink" title="3.修改配置文件"></a>3.修改配置文件</h2><p>1） .editorconfig 该文件是配置编辑器的一些设置，这里我修改了一个缩进，indent_size = 4。因为个人比较喜欢4个缩进，看着舒服。<br>2） .env 该文件是项目环境配置文件，默认的是BROWSER=none，这时候项目启动后，浏览器不会自动打开。<br>3） .eslintrc 多人开发时候，一套良好的代码规范是非常必要的。这里配置了一份基础eslint文件，供参考。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;env&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;es6&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;node&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;browser&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">&quot;mocha&quot;</span>: <span class="literal">true</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;extends&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;eslint:recommended&quot;</span>,</span><br><span class="line">    <span class="string">&quot;react-app&quot;</span></span><br><span class="line">  ],</span><br><span class="line">  <span class="string">&quot;rules&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;strict&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="comment">//&quot;indent&quot;: [&quot;error&quot;, 4, &#123; &quot;SwitchCase&quot;: 1 &#125;],</span></span><br><span class="line">    <span class="string">&quot;eqeqeq&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-lone-blocks&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-lonely-if&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-multi-spaces&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-multiple-empty-lines&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;error&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;max&quot;</span>: <span class="number">2</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;no-param-reassign&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-spaced-func&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-use-before-define&quot;</span>: <span class="string">&quot;warn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-unused-vars&quot;</span>: <span class="string">&quot;warn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-with&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;default-case&quot;</span>: <span class="string">&quot;error&quot;</span>,</span><br><span class="line">    <span class="string">&quot;key-spacing&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;error&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;beforeColon&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;afterColon&quot;</span>: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;comma-spacing&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;error&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;before&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">        <span class="string">&quot;after&quot;</span>: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;generator-star-spacing&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;error&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;before&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="string">&quot;after&quot;</span>: <span class="literal">false</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;semi&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;warn&quot;</span>,</span><br><span class="line">      <span class="string">&quot;always&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;omitLastInOneLineBlock&quot;</span>: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;no-restricted-globals&quot;</span>: <span class="string">&quot;off&quot;</span>,</span><br><span class="line">    <span class="string">&quot;array-callback-return&quot;</span>: <span class="string">&quot;off&quot;</span>,</span><br><span class="line">    <span class="string">&quot;no-console&quot;</span>: [</span><br><span class="line">      <span class="string">&quot;warn&quot;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">&quot;allow&quot;</span>: [</span><br><span class="line">          <span class="string">&quot;info&quot;</span>,</span><br><span class="line">          <span class="string">&quot;warn&quot;</span>,</span><br><span class="line">          <span class="string">&quot;error&quot;</span>,</span><br><span class="line">          <span class="string">&quot;time&quot;</span>,</span><br><span class="line">          <span class="string">&quot;timeEnd&quot;</span></span><br><span class="line">        ]</span><br><span class="line">      &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="string">&quot;react/react-in-jsx-scope&quot;</span>: <span class="string">&quot;warn&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>4） <code>.umirc</code> 主要配置一些代理，主题，alias，插件，诸如此类。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ref: https://umijs.org/config/</span></span><br><span class="line"><span class="keyword">let</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  history: <span class="string">&#x27;hash&#x27;</span>,</span><br><span class="line">  treeShaking: <span class="literal">true</span>,</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">      component: <span class="string">&#x27;../layouts/index&#x27;</span>,</span><br><span class="line">      routes: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">          component: <span class="string">&#x27;../pages/index&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br><span class="line">  plugins: [</span><br><span class="line">    <span class="comment">// ref: https://umijs.org/plugin/umi-plugin-react.html</span></span><br><span class="line">    [</span><br><span class="line">      <span class="string">&#x27;umi-plugin-react&#x27;</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        antd: <span class="literal">true</span>,</span><br><span class="line">        dva: <span class="literal">true</span>,</span><br><span class="line">        dynamicImport: <span class="literal">false</span>,</span><br><span class="line">        title: <span class="string">&#x27;testumi&#x27;</span>,</span><br><span class="line">        dll: <span class="literal">false</span>,</span><br><span class="line">        routes: &#123;</span><br><span class="line">          exclude: [</span><br><span class="line">            /models\<span class="comment">//,</span></span><br><span class="line">            /services\<span class="comment">//,</span></span><br><span class="line">            /model\.(t|j)sx?$/,</span><br><span class="line">            /service\.(t|j)sx?$/,</span><br><span class="line">            /components\<span class="comment">//,</span></span><br><span class="line">          ],</span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;,</span><br><span class="line">    ],</span><br><span class="line">  ],</span><br><span class="line">  proxy: &#123;</span><br><span class="line">    <span class="comment">// &#x27;/api&#x27;: &#123;</span></span><br><span class="line">    <span class="comment">//   target: &#x27;http://127.0.0.1:10000/&#x27;,</span></span><br><span class="line">    <span class="comment">//   changeOrigin: true,</span></span><br><span class="line">    <span class="comment">//   pathRewrite: &#123; &#x27;^/api&#x27;: &#x27;&#x27; &#125;</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  alias: &#123;</span><br><span class="line">    <span class="string">&#x27;@&#x27;</span>: path.resolve(__dirname, <span class="string">&#x27;src&#x27;</span>),</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://umijs.org/zh/config/#uglifyjsoptions">https://umijs.org/zh/config/#uglifyjsoptions</a></p>
+<h2 id="4-新建路由"><a href="#4-新建路由" class="headerlink" title="4.新建路由"></a>4.新建路由</h2><p>我们要写个应用来先显示产品列表。首先第一步是创建路由，路由可以想象成是组成应用的不同页面。</p>
+<p>如果你没有 npx，需要先安装他，用于执行 node_modules 下的命令，</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ yarn <span class="built_in">global</span> add npx</span><br></pre></td></tr></table></figure>
+
+<p>然后通过命令创建 <code>/products</code> 路由，</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npx umi g page Product/index</span><br><span class="line"></span><br><span class="line">   create src/pages/Product/index.js</span><br><span class="line">   create src/pages/Product/index.css</span><br><span class="line">✔  success</span><br></pre></td></tr></table></figure>
+
+<p>然后在浏览器里打开 <a target="_blank" rel="noopener" href="http://localhost:8000/#/Product/index">http://localhost:8000/#/Product/index</a>，你应该能看到对应的页面。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">注意 .umirc.js文件中route的变化</span><br><span class="line"></span><br><span class="line">routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">      component: <span class="string">&#x27;../layouts/index&#x27;</span>,</span><br><span class="line">      routes: [</span><br><span class="line">        &#123;</span><br><span class="line">          path: <span class="string">&#x27;/Product/index&#x27;</span>,</span><br><span class="line">          component: <span class="string">&#x27;./Product/index&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">          path: <span class="string">&#x27;/&#x27;</span>,</span><br><span class="line">          component: <span class="string">&#x27;../pages/index&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  ],</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-改造项目结构"><a href="#5-改造项目结构" class="headerlink" title="5.改造项目结构"></a>5.改造项目结构</h2><p><img src="umi%E5%92%8Cdva/1573457953533.png" alt="1573457953533"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">assets用于存放静态资源，如项目中所需要的图片或Icon等</span><br><span class="line">components公共组件目录</span><br><span class="line">config配置文件目录</span><br><span class="line">global.css全局样式表</span><br><span class="line">pages项目路由，各页面入口</span><br><span class="line">services定义后端的接口调用</span><br><span class="line">models定义各model</span><br><span class="line">utils定义各类工具函数</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-编写-UI-Component"><a href="#6-编写-UI-Component" class="headerlink" title="6.编写 UI Component"></a>6.编写 UI Component</h2><p>随着应用的发展，你会需要在多个页面分享 UI 元素 (或在一个页面使用多次)，在 umi 里你可以把这部分抽成 component 。</p>
+<p>我们来编写一个 <code>ProductList</code> component，这样就能在不同的地方显示产品列表了。</p>
+<p>新建 <code>src/pages/Product/components/ProductList.js</code> 文件：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Table, Popconfirm, Button &#125; <span class="keyword">from</span> <span class="string">&#x27;antd&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> ProductList = <span class="function">(<span class="params">&#123; onDelete, products &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> columns = [&#123;</span><br><span class="line">        title: <span class="string">&#x27;Name&#x27;</span>,</span><br><span class="line">        dataIndex: <span class="string">&#x27;name&#x27;</span>,</span><br><span class="line">    &#125;, &#123;</span><br><span class="line">        title: <span class="string">&#x27;Actions&#x27;</span>,</span><br><span class="line">        render: <span class="function">(<span class="params">text, record</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (</span><br><span class="line">                &lt;Popconfirm title=<span class="string">&quot;Delete?&quot;</span> onConfirm=&#123;<span class="function">() =&gt;</span> onDelete(record.id)&#125;&gt;</span><br><span class="line">                    &lt;Button&gt;Delete&lt;/Button&gt;</span><br><span class="line">                &lt;/Popconfirm&gt;</span><br><span class="line">            );</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;];</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;Table</span><br><span class="line">            dataSource=&#123;products&#125;</span><br><span class="line">            columns=&#123;columns&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> ProductList;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-定义-dva-Model"><a href="#7-定义-dva-Model" class="headerlink" title="7.定义 dva Model"></a>7.定义 dva Model</h2><p>完成 UI 后，现在开始处理数据和逻辑。</p>
+<p>dva 通过 <code>model</code> 的概念把一个领域的模型管理起来，包含同步更新 state 的 reducers，处理异步逻辑的 effects，订阅数据源的 subscriptions 。</p>
+<p>新建 model <code>src/pages/Product/models/products.js</code>，</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    namespace: <span class="string">&#x27;products&#x27;</span>,</span><br><span class="line">    state: &#123;</span><br><span class="line">        datas:[</span><br><span class="line">            &#123; <span class="attr">name</span>: <span class="string">&#x27;dva&#x27;</span>, <span class="attr">id</span>: <span class="number">1</span> &#125;,</span><br><span class="line">            &#123; <span class="attr">name</span>: <span class="string">&#x27;antd&#x27;</span>, <span class="attr">id</span>: <span class="number">2</span> &#125;,</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    reducers: &#123;</span><br><span class="line">        <span class="string">&#x27;delete&#x27;</span>(state, &#123; <span class="attr">payload</span>: id &#125;) &#123;</span><br><span class="line">            state.datas = state.datas.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.id !== id);</span><br><span class="line">            <span class="keyword">return</span> &#123; ...state &#125; ;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这个 model 里：</p>
+<ul>
+<li><code>namespace</code> 表示在全局 state 上的 key</li>
+<li><code>state</code> 是初始值</li>
+<li><code>reducers</code> 等同于 redux 里的 reducer，接收 action，同步更新 state</li>
+</ul>
+<p>umi 里约定 <code>src/models</code> 下的 model 会被自动注入，你无需手动注入。</p>
+<h2 id="8-connect-起来"><a href="#8-connect-起来" class="headerlink" title="8.connect 起来"></a>8.connect 起来</h2><p>到这里，我们已经单独完成了 model 和 component，那么他们如何串联起来呢?</p>
+<p>dva 提供了 <code>connect</code> 方法。如果你熟悉 redux，这个 connect 来自 react-redux。</p>
+<p>编辑 <code>src/pages/Product/index.js</code>，替换为以下内容：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;dva&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ProductList <span class="keyword">from</span> <span class="string">&#x27;./components/ProductList&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Products = <span class="function">(<span class="params">&#123; dispatch, products &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">handleDelete</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    dispatch(&#123;</span><br><span class="line">      type: <span class="string">&#x27;products/delete&#x27;</span>,</span><br><span class="line">      payload: id,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h2&gt;List <span class="keyword">of</span> Products&lt;/h2&gt;</span><br><span class="line">      &lt;ProductList onDelete=&#123;handleDelete&#125; products=&#123;products.datas&#125; /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(<span class="function">(<span class="params">&#123; products &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">  products,</span><br><span class="line">&#125;))(Products);</span><br></pre></td></tr></table></figure>
+
+<p>最后，我们还需要一些初始数据让这个应用 run 起来(数据也可以放在model的state里面)。编辑 <code>src/app.js</code>：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> dva = &#123;</span><br><span class="line">  config: &#123;</span><br><span class="line">    onError(err) &#123;</span><br><span class="line">      err.preventDefault();</span><br><span class="line">      <span class="built_in">console</span>.error(err.message);</span><br><span class="line">    &#125;,</span><br><span class="line">    initialState: &#123;</span><br><span class="line">      products: [</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">&#x27;dva&#x27;</span>, <span class="attr">id</span>: <span class="number">1</span> &#125;,</span><br><span class="line">        &#123; <span class="attr">name</span>: <span class="string">&#x27;antd&#x27;</span>, <span class="attr">id</span>: <span class="number">2</span> &#125;,</span><br><span class="line">      ],</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>刷新浏览器，应该能看到以下效果：</p>
+<p><img src="umi%E5%92%8Cdva%5CGQJeDDeUCSTRMMg.gif" alt="img"></p>
+<h2 id="9-dva实战"><a href="#9-dva实战" class="headerlink" title="9.dva实战"></a>9.dva实战</h2><p><a target="_blank" rel="noopener" href="https://github.com/sorrycc/blog/issues/62">https://github.com/sorrycc/blog/issues/62</a></p>
+<p>​    dva由阿里架构师 sorrycc 带领 team 完成的一套前端框架，dva 是一个基于 <a target="_blank" rel="noopener" href="https://github.com/reduxjs/redux">redux</a> 和 <a target="_blank" rel="noopener" href="https://github.com/redux-saga/redux-saga">redux-saga</a> (异步处理)的数据流方案，在作者的 github 里是这么描述它的：”dva 是 react 和 redux 的最佳实践”。</p>
+<p>​    一般来说，可以分为主要的三个部分，<code>models</code>、<code>services</code> 和 <code>views</code>。其中，<code>views</code>负责页面上的展示，这个不做赘述；<code>services</code>里面主要写一些请求后台接口的方法；<code>models</code>是其中最重要的概念，这里存放了各种数据，并对数据进行相应的交互。</p>
+<p>​    前端是显示数据的，所以前端将显示数据和操作数据分离开，将数据、数据操作全部放到一个地方单独管理起来。每次数据操作之后，先修改数据，再将新的数据告诉react组件。react组件会根据新的数据，重新生成新的dom组件。</p>
+<p>​    在dva中要做这样几件事情：</p>
+<blockquote>
+<ol>
+<li>保存数据。</li>
+<li>提交数据操作请求。操作请求的信息包含一个动作和新的数据（动作+操作数）。新数据的来源有同步和异步。</li>
+<li>根据新的数据和数据操作请求，更新旧的数据。</li>
+<li>把新的数据告诉react组件。</li>
+</ol>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dva将树状结构数据，拆分成不同的数据块管理起来。每个数据块通过一个model组织起来（通常model会和react的组件对应起来）。</span><br><span class="line"></span><br><span class="line">每个model中包含这些东西：</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ul>
+<li>namespace 这个数据块对应到整个树状数据的哪一个块。</li>
+<li>state 这个model要管理的数据。</li>
+<li>effect 异步调用的操作。</li>
+<li>reducers 响应动作后对数据的操作。</li>
+</ul>
+</blockquote>
+<h3 id="9-1-准备后台接口"><a href="#9-1-准备后台接口" class="headerlink" title="9.1 准备后台接口"></a>9.1 准备后台接口</h3><p>​      mock/home.js</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    <span class="comment">// 支持值为 Object 和 Array  </span></span><br><span class="line">    <span class="comment">// list, total, page</span></span><br><span class="line">    <span class="comment">//&#x27;GET /api/users&#x27;: &#123; list: [&#123;name:&#x27;zhangsan&#x27;,email:&quot;zhangsan@qq.com&quot;,website:&quot;xx.com&quot;&#125;,&#123;name:&quot;lisi&quot;,email:&quot;lisi@qq.com&quot;,website:&quot;ll.com&quot;&#125;],total:105,page:2 &#125;,</span></span><br><span class="line">  </span><br><span class="line">    <span class="string">&#x27;GET /api/users&#x27;</span>:<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123; </span><br><span class="line">        <span class="keyword">var</span> page = req.query.page;</span><br><span class="line">        <span class="keyword">var</span> data = &#123; <span class="attr">list</span>: [&#123;<span class="attr">name</span>:<span class="string">&#x27;zhangsan&#x27;</span>,<span class="attr">email</span>:<span class="string">&quot;zhangsan@qq.com&quot;</span>,<span class="attr">website</span>:<span class="string">&quot;xx.com&quot;</span>&#125;,&#123;<span class="attr">name</span>:<span class="string">&quot;lisi&quot;</span>,<span class="attr">email</span>:<span class="string">&quot;lisi@qq.com&quot;</span>,<span class="attr">website</span>:<span class="string">&quot;ll.com&quot;</span>&#125;],<span class="attr">total</span>:<span class="number">105</span>,<span class="attr">page</span>:page &#125;;</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(data))</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// GET POST 可省略</span></span><br><span class="line">    <span class="string">&#x27;/api/users/1&#x27;</span>: &#123; <span class="attr">id</span>: <span class="number">1</span> &#125;,</span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 支持自定义函数，API 参考 express@4</span></span><br><span class="line">    <span class="string">&#x27;POST /api/users/create&#x27;</span>: <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123; res.end(<span class="string">&#x27;OK&#x27;</span>); &#125;,</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-2-封装请求工具类"><a href="#9-2-封装请求工具类" class="headerlink" title="9.2 封装请求工具类"></a>9.2 封装请求工具类</h3><p>​    src/utils/request.js</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&quot;axios&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">request</span> (<span class="params">options</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> response</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        response = <span class="keyword">await</span> axios(options)</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">        <span class="keyword">return</span> response</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-3-封装service"><a href="#9-3-封装service" class="headerlink" title="9.3 封装service"></a>9.3 封装service</h3><p>​    pages/User/services/index.js</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&#x27;@/utils/request&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">queryUserList</span>(<span class="params">&#123; page = <span class="number">1</span> &#125;</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> request(<span class="string">`/api/users?page=<span class="subst">$&#123;page&#125;</span>`</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-4-编写模型层"><a href="#9-4-编写模型层" class="headerlink" title="9.4 编写模型层"></a>9.4 编写模型层</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pages&#x2F;User&#x2F;models&#x2F;user.js</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; queryUserList &#125; <span class="keyword">from</span> <span class="string">&#x27;@/pages/User/services/index&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">    namespace: <span class="string">&#x27;users&#x27;</span>,</span><br><span class="line">    state: &#123;</span><br><span class="line">        list: [],</span><br><span class="line">        total: <span class="literal">null</span>,</span><br><span class="line">        page: <span class="literal">null</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    reducers: &#123;</span><br><span class="line">        <span class="comment">// 保存数据</span></span><br><span class="line">        save(state, &#123; <span class="attr">payload</span>: &#123; list, total, page &#125; &#125;) &#123;</span><br><span class="line">            <span class="comment">// 复制数组，将list, total, page内容复制到state</span></span><br><span class="line">            <span class="keyword">return</span> &#123; ...state, list, total, page &#125;;</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//用于处理异步操作和业务逻辑，不直接修改 state，简单的来说，就是获取从服务端获取数据，并且发起       一个 action 交给 reducer 的地方。其中它用到了redux-saga，里面有几个常用的函数。</span></span><br><span class="line">   <span class="comment">/*</span></span><br><span class="line"><span class="comment">   put:  用于触发action</span></span><br><span class="line"><span class="comment">        yield put(&#123; type: &#x27;todos/add&#x27;, payload: &#x27;Learn Dva&#x27;&#125;);</span></span><br><span class="line"><span class="comment">   </span></span><br><span class="line"><span class="comment">   call:用于调用异步逻辑，支持Promise。</span></span><br><span class="line"><span class="comment">        const result = yield call(fetch, &#x27;/todos&#x27;);</span></span><br><span class="line"><span class="comment">        这个call与JS的call用法大概一致，这个call的第一个参数是你要调用的函数，第二个参数开始是你要传递的参数，可一 一传递。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    select:用于从state里获取数据。</span></span><br><span class="line"><span class="comment">        const todos = yield select(state =&gt; state.todos);</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">    effects: &#123;</span><br><span class="line">        <span class="comment">// 访问接口获取数据 并且保存数据</span></span><br><span class="line">        *fetchUserList(&#123; <span class="attr">payload</span>: &#123; page = <span class="number">1</span> &#125; &#125;, &#123; call, put &#125;) &#123;</span><br><span class="line">            <span class="keyword">const</span> &#123; data &#125; = <span class="keyword">yield</span> call(queryUserList, &#123; page &#125;);</span><br><span class="line">            <span class="keyword">yield</span> put(&#123;</span><br><span class="line">                type: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">                payload: &#123;</span><br><span class="line">                    list: data.list,</span><br><span class="line">                    total: <span class="built_in">parseInt</span>(data.total, <span class="number">10</span>),</span><br><span class="line">                    page: <span class="built_in">parseInt</span>(data.page, <span class="number">10</span>)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    subscriptions: &#123;</span><br><span class="line">        <span class="comment">// https://github.com/dvajs/dva/issues/174</span></span><br><span class="line">        setup(&#123; dispatch, history &#125;) &#123;</span><br><span class="line">            <span class="keyword">return</span> history.listen(<span class="function">(<span class="params">&#123; pathname, query &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="comment">// 进入&#x27;/users&#x27;地址触发fetchUserList</span></span><br><span class="line">                <span class="keyword">if</span> (pathname === <span class="string">&#x27;/User/index&#x27;</span>) &#123;</span><br><span class="line">                    dispatch(&#123; <span class="attr">type</span>: <span class="string">&#x27;fetchUserList&#x27;</span>, <span class="attr">payload</span>: query &#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="9-5-编写页面"><a href="#9-5-编写页面" class="headerlink" title="9.5 编写页面"></a>9.5 编写页面</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pages&#x2F;User&#x2F;index.js</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&#x27;dva&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Table, Pagination, Popconfirm, Button &#125; <span class="keyword">from</span> <span class="string">&#x27;antd&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Users</span>(<span class="params">&#123; dispatch, list: dataSource, loading, total, page: current &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">deleteHandler</span>(<span class="params">id</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.warn(<span class="string">`TODO: <span class="subst">$&#123;id&#125;</span>`</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">onChangeUserPagination</span>(<span class="params">page</span>) </span>&#123;</span><br><span class="line">    dispatch(&#123;</span><br><span class="line">      type: <span class="string">&#x27;users/fetchUserList&#x27;</span>,</span><br><span class="line">      payload: &#123;</span><br><span class="line">        page: page</span><br><span class="line">      &#125;, <span class="comment">// 需要传递的信息</span></span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> columns = [</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">&#x27;用户名&#x27;</span>,</span><br><span class="line">      dataIndex: <span class="string">&#x27;name&#x27;</span>,</span><br><span class="line">      key: <span class="string">&#x27;name&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">&#x27;电子邮件&#x27;</span>,</span><br><span class="line">      dataIndex: <span class="string">&#x27;email&#x27;</span>,</span><br><span class="line">      key: <span class="string">&#x27;email&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">&#x27;个人网站&#x27;</span>,</span><br><span class="line">      dataIndex: <span class="string">&#x27;website&#x27;</span>,</span><br><span class="line">      key: <span class="string">&#x27;website&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      title: <span class="string">&#x27;操作&#x27;</span>,</span><br><span class="line">      key: <span class="string">&#x27;operation&#x27;</span>,</span><br><span class="line">      render: <span class="function">(<span class="params">text, &#123; id &#125;</span>) =&gt;</span> (</span><br><span class="line">        &lt;span className=&#123;styles.operation&#125;&gt;</span><br><span class="line">          &lt;Button&gt;编辑&lt;/Button&gt;</span><br><span class="line">          &lt;Popconfirm title=<span class="string">&quot;Confirm to delete?&quot;</span> onConfirm=&#123;deleteHandler.bind(<span class="literal">null</span>, id)&#125;&gt;</span><br><span class="line">            &lt;Button&gt;删除&lt;/Button&gt;</span><br><span class="line">          &lt;/Popconfirm&gt;</span><br><span class="line">        &lt;/span&gt;</span><br><span class="line">      ),</span><br><span class="line">    &#125;,</span><br><span class="line">  ];</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div className=&#123;styles.normal&#125;&gt;</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;Table</span><br><span class="line">          loading=&#123;loading&#125;</span><br><span class="line">          columns=&#123;columns&#125;</span><br><span class="line">          dataSource=&#123;dataSource&#125;</span><br><span class="line">          rowKey=&#123;<span class="function"><span class="params">record</span> =&gt;</span> record.id&#125;</span><br><span class="line">          pagination=&#123;<span class="literal">false</span>&#125;</span><br><span class="line">        /&gt;</span><br><span class="line">        &lt;Pagination</span><br><span class="line">          className=<span class="string">&quot;ant-table-pagination&quot;</span></span><br><span class="line">          total=&#123;total&#125; <span class="comment">// 数据总数</span></span><br><span class="line">          current=&#123;current&#125; <span class="comment">// 当前页数</span></span><br><span class="line">          onChange=&#123;onChangeUserPagination&#125;</span><br><span class="line">          page=<span class="string">&quot;1&quot;</span></span><br><span class="line">        /&gt;</span><br><span class="line">      &lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">mapStateToProps</span>(<span class="params">state</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; list, total, page &#125; = state.users;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">    list,</span><br><span class="line">    total,</span><br><span class="line">    page</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(mapStateToProps)(Users);</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/01/29/umi%E5%92%8Cdva/" data-id="ckdzwmbdh000n0wv01pum1bp4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/22/flux%E5%92%8Credux/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          flux和redux
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/01/22/%E7%B2%BE%E8%AE%B2react%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">精讲react高阶组件</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/hhh/">hhh</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAreact-hooks/">深入浅出react hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/22/nextJS/">nextJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

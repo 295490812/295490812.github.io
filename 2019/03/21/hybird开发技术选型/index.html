@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>hybird开发技术选型 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.混合移动App开发介绍1.1 混合开发的基本概念 原生开发：它的英文单词是（NativeApp）,指的就是使用 IOS、Android 官方提供的工具、开发平台、配套语言进行手机App开发的方式； 12苹果的软件开发：使用的是 OC、或者使用Swift这门语言安卓的软件开发：使用Java  混合开发：（HybirdApp）就是使用前端已有的技术，HTML + CSS + JS ，然后再搭配一些">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hybird开发技术选型">
+<meta property="og:url" content="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.混合移动App开发介绍1.1 混合开发的基本概念 原生开发：它的英文单词是（NativeApp）,指的就是使用 IOS、Android 官方提供的工具、开发平台、配套语言进行手机App开发的方式； 12苹果的软件开发：使用的是 OC、或者使用Swift这门语言安卓的软件开发：使用Java  混合开发：（HybirdApp）就是使用前端已有的技术，HTML + CSS + JS ，然后再搭配一些">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/%E4%B8%89%E7%A7%8D%E5%BC%80%E5%8F%91%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8E%9F%E7%90%86.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/%E4%B8%89%E7%A7%8D%E5%BC%80%E5%8F%91%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AF%B9%E6%AF%94.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/1581226008580.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/1581221851996.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/1581223352775.png">
+<meta property="og:image" content="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/aa.png">
+<meta property="article:published_time" content="2019-03-21T07:51:13.000Z">
+<meta property="article:modified_time" content="2020-04-14T07:56:25.979Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/%E4%B8%89%E7%A7%8D%E5%BC%80%E5%8F%91%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8E%9F%E7%90%86.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-hybird开发技术选型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" class="article-date">
+  <time datetime="2019-03-21T07:51:13.000Z" itemprop="datePublished">2019-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/react/">react</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      hybird开发技术选型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-混合移动App开发介绍"><a href="#1-混合移动App开发介绍" class="headerlink" title="1.混合移动App开发介绍"></a>1.混合移动App开发介绍</h2><h3 id="1-1-混合开发的基本概念"><a href="#1-1-混合开发的基本概念" class="headerlink" title="1.1 混合开发的基本概念"></a>1.1 混合开发的基本概念</h3><ul>
+<li><p>原生开发：它的英文单词是（NativeApp）,指的就是使用 IOS、Android 官方提供的工具、开发平台、配套语言进行手机App开发的方式；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">苹果的软件开发：使用的是 OC、或者使用Swift这门语言</span><br><span class="line">安卓的软件开发：使用Java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>混合开发：（HybirdApp）就是使用前端已有的技术，HTML + CSS + JS ，然后再搭配一些相关的打包编译技术，就能够开发出一个手机App，安装到手机中进行使用；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">前端的混合移动App开发技术，并没有使用苹果或安卓官方推荐的开发平台和开发方式，而是抛弃了 官方提供的方式，使用前端的独有的技术进行移动App开发体验；</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="1-2-App介绍"><a href="#1-2-App介绍" class="headerlink" title="1.2 App介绍"></a>1.2 App介绍</h3><ul>
+<li><p>什么是App：App是（Application的缩写），意思是：可安装的应用程序；</p>
+</li>
+<li><p>App的分类：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">按照平台来划分：</span><br><span class="line">  - PC端：浏览器、代码编辑器、PC端的游戏、听歌的、看视频的、聊天的</span><br><span class="line">  - 移动端：手机QQ、手机微信、手机爱奇艺、亡者农药</span><br><span class="line">  </span><br><span class="line">按照功能来划分：</span><br><span class="line">  - 游戏：愤怒的小鸡仔、植物大战僵尸、亡者农药.....LOL</span><br><span class="line">  - 应用：非游戏类的软件，支付宝、陌陌、美团外卖、</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>App和Web的区别：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">APP概念：App是（Application的缩写），意思是：可安装的应用程序；</span><br><span class="line">- 优点：流畅、稳定、基本上一些App都可以脱网运行，用户体验好；</span><br><span class="line">- 缺点：不能跨平台 </span><br><span class="line"></span><br><span class="line">Web概念：特指那些基于浏览器的web网站（本质：就是网页）</span><br><span class="line">- 优点：可以跨平台（浏览器天生就是跨平台的）</span><br><span class="line">- 缺点：没有App流畅、不稳定，受限于网速和网络</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="1-3-常见的App开发方式"><a href="#1-3-常见的App开发方式" class="headerlink" title="1.3 常见的App开发方式"></a>1.3 常见的App开发方式</h3><ul>
+<li><p>WebApp(H5App)：基于浏览器实现的，有特定功能的网站，称作WebApp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例如：百度脑图、https:&#x2F;&#x2F;m.jd.com&#x2F;、https:&#x2F;&#x2F;m.taobao.com&#x2F;#index</span><br><span class="line"></span><br><span class="line">优点：跨平台</span><br><span class="line">缺点：依赖网络，有白屏效果，相对来说，用户体验差；不能调用硬件底层得设备，比如摄像头</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>NativeApp：用android和Object-C等原生语言开发的应用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">优点：体验好；用户使用起来很流畅；非常适合做游戏【性能高】；可以直接调用硬件底层的API；</span><br><span class="line">缺点：不能跨平台</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>HybirdApp：利用前端所学的知识去开发移动端App，兼具2者的优势</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">优点：能够跨平台；体验会好一些；也能够调用硬件底层的API</span><br><span class="line">缺点：相对于原生体验稍微弱一丢丢；不适合做游戏；适合做非游戏类型的手机App；</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="1-4-三种开发方式的原理和对比"><a href="#1-4-三种开发方式的原理和对比" class="headerlink" title="1.4 三种开发方式的原理和对比"></a>1.4 三种开发方式的原理和对比</h3><p><img src="hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/%E4%B8%89%E7%A7%8D%E5%BC%80%E5%8F%91%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8E%9F%E7%90%86.png"></p>
+<p>注意： 使用 Java 或者 IOS 写出来的代码和程序，在最终运行的时候，普通的文本代码，都会被编译为 原生的机器码去运行，并不像 JS 这样，解析执行，Java代码是 编译执行的；</p>
+<p><img src="hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/%E4%B8%89%E7%A7%8D%E5%BC%80%E5%8F%91%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%AF%B9%E6%AF%94.png"></p>
+<h3 id="1-5-选择合适的App开发方式"><a href="#1-5-选择合适的App开发方式" class="headerlink" title="1.5 选择合适的App开发方式"></a>1.5 选择合适的App开发方式</h3><ol>
+<li>如果这个企业中，曾经使用原生技术开发过一些APP，那么在维护的时候，必然需要使用原生技术来维护</li>
+<li>如果企业中，需要做一些游戏级别的应用，那么推荐使用原生，因为原生运行效率高，对耗电量处理的很好；</li>
+<li>如果企业做一些应用级别的非游戏软件，比如 淘宝、京东、美团，就可以使用混合APP了；</li>
+<li>在企业中最主要的是好的点子，如果有了一个好的项目立案，那么最好要立即把这个项目做出来；这时候，使用混合App非常合适，因为开发周期很短，能快速上线，抢先占领市场；【裤衩开发】</li>
+</ol>
+<h3 id="1-6-混合式开发的技术选型"><a href="#1-6-混合式开发的技术选型" class="headerlink" title="1.6 混合式开发的技术选型"></a>1.6 混合式开发的技术选型</h3><ul>
+<li><p>Angular/React(Vue) + Ionic</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">特点：</span><br><span class="line">- 对Angular支持好</span><br><span class="line">- 开发H5App、HybirdApp</span><br><span class="line">- 基于Cordova提供的打包命令打包成iOS、android端程序</span><br><span class="line">- 支持web、iOS、android(HybirdApp应用)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>h5+</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">特点：</span><br><span class="line">- 提供打包工具将H5应用打包成HybirdApp应用</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>React+React-Native</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">特点：</span><br><span class="line">- 基于React语法</span><br><span class="line">- 开发NativeApp</span><br><span class="line">- 提供编译工具将源代码编译成iOS和android端应用</span><br><span class="line">- 坑多，社区生态多，目前是主流的原生开发技术</span><br><span class="line">- facebook正在重构React-Native</span><br></pre></td></tr></table></figure>
+
+<p><img src="hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/1581226008580.png" alt="1581226008580"></p>
+</li>
+<li><p>Vue+Weex(阿里)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- 使用vue作为上层框架</span><br><span class="line">- 开发WebApp、NativeApp</span><br><span class="line">- 使用Weex提供的打包工具打包成iOS、android端程序</span><br><span class="line">- 支持web、iOS、android(NativeApp应用)</span><br><span class="line">- 更新慢、坑多、社区不活跃</span><br></pre></td></tr></table></figure>
+
+<p><img src="hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/1581221851996.png" alt="1581221851996"></p>
+</li>
+<li><p>flutter(谷歌)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">特点：</span><br><span class="line">- 基于dart语言（不是JavaScript）</span><br><span class="line">- 框架较新，坑多</span><br><span class="line">- 开发NativeApp</span><br><span class="line">- 没有使用iOS和android的原生组件，使用的是自己定义的Widgets(小控件)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>React+Taro(京东)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">特点：</span><br><span class="line">- 基于React语法</span><br><span class="line">- 一套源码，多端支持（微信&#x2F;百度&#x2F;支付宝&#x2F;头条&#x2F;QQ小程序、H5App、React Native）</span><br><span class="line">- 提供编译工具将源代码分别编译成各种小程序、H5、RN</span><br><span class="line">- 坑多、框架新、更新维护快、官方微信群活跃</span><br><span class="line">- 一般可以用来写各种小程序，只支持Taro自己提供的UI库，不支持第三方UI库(小程序的库肯定不能用在React Native)</span><br></pre></td></tr></table></figure>
+
+<p><img src="hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/1581223352775.png" alt="1581223352775"></p>
+</li>
+<li><p>uni-app</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">特点：</span><br><span class="line">- 基于Vue语法</span><br><span class="line">- 一套源码，多端支持(微信&#x2F;百度&#x2F;支付宝&#x2F;头条&#x2F;QQ小程序、H5App、NativeApp)</span><br><span class="line">- 提供编译工具将源代码分别编译成各种小程序、H5、NativeApp</span><br><span class="line">- App端使用H5+规范，H5+规范包括了html5plus、Native.js、weex</span><br><span class="line">- 坑多，社区不够强大</span><br><span class="line">- 可以用来写各种小程序和H5App</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<blockquote>
+<p>Angular, Vue, React 这三个都是前端框架，我们在进行混合App开发的时候，只是用到了这三个框架的【基础语法】而已；</p>
+</blockquote>
+<h3 id="1-7-开发技术选型之间的区别"><a href="#1-7-开发技术选型之间的区别" class="headerlink" title="1.7 开发技术选型之间的区别"></a>1.7 开发技术选型之间的区别</h3><p><img src="hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/aa.png"></p>
+<ul>
+<li><p>Vue结合 Weex (阿里)这门技术，提供了原生移动App开发的体验（Weex，目前只是一个小的玩具， 并没有很成功的大案例；）</p>
+</li>
+<li><p>React结合 ReactNative，也提供了原生移动App的开发体验（RN用的最多，也是最火最流行的）；</p>
+<p>Who’s using React Native? <a target="_blank" rel="noopener" href="https://facebook.github.io/react-native/showcase">https://facebook.github.io/react-native/showcase</a></p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" data-id="ckdzwmbda00080wv0ahwm442p" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/22/%E7%AE%80%E8%BF%B0Js%E4%B8%AD%E7%9A%84%E5%8E%9F%E5%9E%8B%E4%B8%8E%E5%8E%9F%E5%9E%8B%E9%93%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          简述Js中的原型与原型链
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/03/21/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue双向数据绑定</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/hhh/">hhh</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAreact-hooks/">深入浅出react hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/22/nextJS/">nextJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

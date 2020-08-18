@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>react组件通信 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.1 父子组件的通信a) 父组件传递给子组件1234&#x2F;&#x2F;父组件&lt;CMTItem key&#x3D;&amp;#123;i&amp;#125; &amp;#123;...item&amp;#125;&lt;&#x2F;CMTItem&gt;&#x2F;&#x2F;子组件通过this.props可以获取到父组件传递过来的数据  b) 子组件传递给父组件1234&#x2F;&#x2F;父组件 &lt;CMTBox reload&#x3D;&amp;#123;this.loadCmts&amp;#125;&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react组件通信">
+<meta property="og:url" content="http://yoursite.com/2019/06/26/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.1 父子组件的通信a) 父组件传递给子组件1234&#x2F;&#x2F;父组件&lt;CMTItem key&#x3D;&amp;#123;i&amp;#125; &amp;#123;...item&amp;#125;&lt;&#x2F;CMTItem&gt;&#x2F;&#x2F;子组件通过this.props可以获取到父组件传递过来的数据  b) 子组件传递给父组件1234&#x2F;&#x2F;父组件 &lt;CMTBox reload&#x3D;&amp;#123;this.loadCmts&amp;#125;&gt;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2019/06/26/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/1553135155547.png">
+<meta property="og:image" content="http://yoursite.com/2019/06/26/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/1553135231745.png">
+<meta property="article:published_time" content="2019-06-26T13:29:55.000Z">
+<meta property="article:modified_time" content="2020-03-29T04:34:33.097Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/06/26/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/1553135155547.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-react组件通信" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/26/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/" class="article-date">
+  <time datetime="2019-06-26T13:29:55.000Z" itemprop="datePublished">2019-06-26</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/react/">react</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react组件通信
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-1-父子组件的通信"><a href="#1-1-父子组件的通信" class="headerlink" title="1.1 父子组件的通信"></a>1.1 父子组件的通信</h2><h3 id="a-父组件传递给子组件"><a href="#a-父组件传递给子组件" class="headerlink" title="a) 父组件传递给子组件"></a>a) 父组件传递给子组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line">&lt;CMTItem key=&#123;i&#125; &#123;...item&#125;&lt;/CMTItem&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子组件通过this.props可以获取到父组件传递过来的数据</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="b-子组件传递给父组件"><a href="#b-子组件传递给父组件" class="headerlink" title="b) 子组件传递给父组件"></a>b) 子组件传递给父组件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line"> &lt;CMTBox reload=&#123;<span class="built_in">this</span>.loadCmts&#125;&gt;&lt;/CMTBox&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//子组件通过this.props.reload() 来调用父组件的方法，调用的时候可以传递参数</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="1-2-使用Context实现跨组件通信"><a href="#1-2-使用Context实现跨组件通信" class="headerlink" title="1.2 使用Context实现跨组件通信"></a>1.2 使用Context实现跨组件通信</h2><p>当你不想在组件树中通过逐层传递 <code>props</code>或者<code>state</code>的方式来传递数据时，可以使用<code>Context</code>来实现<strong>跨层级</strong>的组件数据传递。</p>
+<h3 id="a-父子组件传递数据的方式"><a href="#a-父子组件传递数据的方式" class="headerlink" title="a) 父子组件传递数据的方式"></a>a) 父子组件传递数据的方式</h3><p><img src="react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/1553135155547.png" alt="1553135155547"></p>
+<h3 id="b-使用Context跨级传递数据"><a href="#b-使用Context跨级传递数据" class="headerlink" title="b) 使用Context跨级传递数据"></a>b) 使用Context跨级传递数据</h3><p><img src="react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/1553135231745.png" alt="1553135231745"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个Context对象</span></span><br><span class="line"><span class="keyword">const</span> ThemeContext = React.createContext(<span class="string">&quot;light&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">ContextComp</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>() &#123;</span><br><span class="line">        <span class="built_in">super</span>()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="comment">//ThemeContext.Provider 数据的提供者，允许消费组件订阅context的变化</span></span><br><span class="line">        <span class="comment">//value就是给子组件暴露的数据</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">ThemeContext.Provider</span> <span class="attr">value</span>=<span class="string">&#123;&#123;name:</span>&quot;<span class="attr">zhangsan</span>&quot;&#125;&#125;&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">ThemedButton</span>&gt;</span><span class="tag">&lt;/<span class="name">ThemedButton</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">ThemeContext.Provider</span>&gt;</span></span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThemedButton</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="comment">//这能让你使用 this.context 来消费最近 Context 上的那个值</span></span><br><span class="line">    <span class="keyword">static</span> contextType = ThemeContext;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">Content</span>&gt;</span><span class="tag">&lt;/<span class="name">Content</span>&gt;</span></span></span><br><span class="line"><span class="xml">            <span class="tag">&lt;<span class="name">button</span>&gt;</span>&#123;this.context.name&#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//ThemeContext.Consumer 允许我们在函数组件中使用Context</span></span><br><span class="line"><span class="comment">//ThemeContext.Consumer中的箭头函数的入参就是最近一个Provider所暴露的数据</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Content</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">ThemeContext.Consumer</span>&gt;</span>&#123;</span></span><br><span class="line"><span class="xml">        obj =&gt; &#123;</span></span><br><span class="line"><span class="xml">            return <span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;obj.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        &#125;</span></span><br><span class="line"><span class="xml">    &#125;<span class="tag">&lt;/<span class="name">ThemeContext.Consumer</span>&gt;</span></span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="1-3-使用自定义事件实现组件通讯"><a href="#1-3-使用自定义事件实现组件通讯" class="headerlink" title="1.3 使用自定义事件实现组件通讯"></a>1.3 使用自定义事件实现组件通讯</h2><p>在没有嵌套关系的组件中，我们可以使用自定义事件的方式实现组件通信。</p>
+<blockquote>
+<p>1.在componentDidMount事件中，订阅事件</p>
+<p>2.在组件卸载的时候，在componentWillUnmount事件中取消事件的订阅;</p>
+<p>3.以常用的发布/订阅模式，借用Node.js Events模块的浏览器版实现</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install events --save</span><br></pre></td></tr></table></figure>
+
+<p>在src下新建一个util目录里面建一个events.js</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; EventEmitter &#125; <span class="keyword">from</span> <span class="string">&#x27;events&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> EventEmitter();</span><br></pre></td></tr></table></figure>
+
+<p>list1.jsx</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> emitter <span class="keyword">from</span> <span class="string">&#x27;../util/events&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">List</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">        <span class="built_in">super</span>(props);</span><br><span class="line">        <span class="built_in">this</span>.state = &#123;</span><br><span class="line">            message: <span class="string">&#x27;List1&#x27;</span>,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        <span class="comment">// 组件装载完成以后声明一个自定义事件</span></span><br><span class="line">        <span class="built_in">this</span>.eventEmitter = emitter.addListener(<span class="string">&#x27;changeMessage&#x27;</span>, <span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.setState(&#123;</span><br><span class="line">                message,</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    componentWillUnmount() &#123;</span><br><span class="line">        emitter.removeListener(<span class="built_in">this</span>.eventEmitter);</span><br><span class="line">    &#125;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &#123;<span class="built_in">this</span>.state.message&#125;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> List;</span><br></pre></td></tr></table></figure>
+
+<p>List2.jsx</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> emitter <span class="keyword">from</span> <span class="string">&#x27;../util/events&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">List2</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    handleClick = <span class="function">(<span class="params">message</span>) =&gt;</span> &#123;</span><br><span class="line">        emitter.emit(<span class="string">&#x27;changeMessage&#x27;</span>, message);</span><br><span class="line">    &#125;;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;button onClick=&#123;<span class="built_in">this</span>.handleClick.bind(<span class="built_in">this</span>, <span class="string">&#x27;List2&#x27;</span>)&#125;&gt;点击我改变List1组件中显示信息&lt;/button&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>App.jsx</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> List1 <span class="keyword">from</span> <span class="string">&#x27;./components/List1&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> List2 <span class="keyword">from</span> <span class="string">&#x27;./components/List2&#x27;</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">    render() &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            &lt;div&gt;</span><br><span class="line">                &lt;List1 /&gt;</span><br><span class="line">                &lt;List2 /&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>自定义事件是典型的发布订阅模式,通过向事件对象上添加监听器和触发事件来实现组件之间的通信</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/26/react%E7%BB%84%E4%BB%B6%E9%80%9A%E4%BF%A1/" data-id="ckdzwmbdg000j0wv07rtncyve" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/06/28/rn%E4%B8%AD%E7%9A%84%E6%89%8B%E5%8A%BF%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          rn中的手势系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/05/02/vue%E6%A0%B7%E5%BC%8F%E7%A9%BF%E9%80%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">vue样式穿透</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/hhh/">hhh</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAreact-hooks/">深入浅出react hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/22/nextJS/">nextJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

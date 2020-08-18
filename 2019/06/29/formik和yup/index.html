@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>formik和yup | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.formik+yupformik文档 https:&#x2F;&#x2F;jaredpalmer.com&#x2F;formik&#x2F;docs&#x2F;api&#x2F;formik#props yup文档 https:&#x2F;&#x2F;github.com&#x2F;jquense&#x2F;yup#yup 表单操作在React中一直是一件比较繁琐的事情，使用formik可以极大的简化表单操作，formik的slogan就是 Build forms in React, wit">
+<meta property="og:type" content="article">
+<meta property="og:title" content="formik和yup">
+<meta property="og:url" content="http://yoursite.com/2019/06/29/formik%E5%92%8Cyup/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="1.formik+yupformik文档 https:&#x2F;&#x2F;jaredpalmer.com&#x2F;formik&#x2F;docs&#x2F;api&#x2F;formik#props yup文档 https:&#x2F;&#x2F;github.com&#x2F;jquense&#x2F;yup#yup 表单操作在React中一直是一件比较繁琐的事情，使用formik可以极大的简化表单操作，formik的slogan就是 Build forms in React, wit">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10769576-f46a2b762c50bf87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/10769576-49fa1d42d3cb6b7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/520/format/webp">
+<meta property="article:published_time" content="2019-06-29T13:08:09.000Z">
+<meta property="article:modified_time" content="2020-03-29T04:12:38.782Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/10769576-f46a2b762c50bf87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-formik和yup" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/06/29/formik%E5%92%8Cyup/" class="article-date">
+  <time datetime="2019-06-29T13:08:09.000Z" itemprop="datePublished">2019-06-29</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/react/">react</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      formik和yup
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-formik-yup"><a href="#1-formik-yup" class="headerlink" title="1.formik+yup"></a>1.formik+yup</h1><p>formik文档</p>
+<p><a target="_blank" rel="noopener" href="https://jaredpalmer.com/formik/docs/api/formik#props">https://jaredpalmer.com/formik/docs/api/formik#props</a></p>
+<p>yup文档</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/jquense/yup#yup">https://github.com/jquense/yup#yup</a></p>
+<p>表单操作在React中一直是一件比较繁琐的事情，使用formik可以极大的简化表单操作，formik的slogan就是 Build forms in React, without the tears 😭 </p>
+<h2 id="1-1-formik介绍"><a href="#1-1-formik介绍" class="headerlink" title="1.1 formik介绍"></a>1.1 formik介绍</h2><p>当我们想要访问表单中的input控件的值时，通常有两种操作，一种是使用ref去得到dom结构，第二种是使用state存储value。首先，针对于第一种情况，虽然使用ref能够让我们很方便的获取到dom节点，进而获取input的值，但是需要注意的是当我们在使用React的时候，我们需要时刻告诉自己，不要直接操作dom！不要直接操作dom！不要直接操作dom！官方也是不推荐该做法的； 对于第二种做法，虽然这是官方推荐的做法，当时由于绑定了state，所以form表单中的控件也变成了受控组件，如果我们想真正改动其数据，我们往往需要再绑定一个onChange事件，当控件过多时，操作也是非常繁琐的。</p>
+<p>而formik的出现，将表单操作化繁为简，使得表单操作变得非常的简单。formik不仅提供了针对的表单的状态管理，还能很方便的对表单做规则校验。其实formik的原理很简单：它内置了表单的state管理操作，无需我们在单独为表单建立state，同时使用了Context，能够让表单组件多层嵌套，不再需要我们一层层传递。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>npm</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install formik --save</span><br></pre></td></tr></table></figure>
+
+<p>要么</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add formik</span><br></pre></td></tr></table></figure>
+
+<p>Formik与React v15 +兼容，并与ReactDOM和React Native一起使用。</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p> <img src="https://upload-images.jianshu.io/upload_images/10769576-f46a2b762c50bf87.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500/format/webp" alt="img"> </p>
+<p>我们该表单作为例子，表单包含了姓名，性别，年龄三个字段，一个提交按钮，给定表单规则如下：</p>
+<ul>
+<li>姓名（name）: 必填非空</li>
+<li>性别（gender）: 必选非空</li>
+<li>年龄（age）:必填非空，大于0的整数</li>
+</ul>
+<p>formik提供了一个名为<code>Formik</code>的组件，组件包含了initialValues，validate,onSubmit,render等props（不限于此，列举出来的只是当前用到的关键的props，完整结构详解Formik API，下面解释一个各个prop作用：</p>
+<ul>
+<li>initialValues：初始化表单的数据</li>
+<li>validate：表单规则校验，返回一个错误信息的对象</li>
+<li>onSubmit: 获得表单各个字段，自定义自己的业务操作</li>
+<li>render: 表单内部的children组件</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Formik &#125; <span class="keyword">from</span> <span class="string">&#x27;formik&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> BasicExample = <span class="function">() =&gt;</span> (</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1&gt;My Form&lt;/h1&gt;</span><br><span class="line">    &lt;Formik</span><br><span class="line">      initialValues=&#123;&#123; <span class="attr">name</span>: <span class="string">&#x27;jared&#x27;</span> &#125;&#125;</span><br><span class="line">      onSubmit=&#123;<span class="function">(<span class="params">values, actions</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">          alert(<span class="built_in">JSON</span>.stringify(values, <span class="literal">null</span>, <span class="number">2</span>));</span><br><span class="line">          actions.setSubmitting(<span class="literal">false</span>);</span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">      &#125;&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &#123;<span class="function"><span class="params">props</span> =&gt;</span> (</span><br><span class="line">        &lt;form onSubmit=&#123;props.handleSubmit&#125;&gt;</span><br><span class="line">          &lt;input</span><br><span class="line">            type=<span class="string">&quot;text&quot;</span></span><br><span class="line">            onChange=&#123;props.handleChange&#125;</span><br><span class="line">            onBlur=&#123;props.handleBlur&#125;</span><br><span class="line">            value=&#123;props.values.name&#125;</span><br><span class="line">            name=<span class="string">&quot;name&quot;</span></span><br><span class="line">          /&gt;</span><br><span class="line">          &#123;props.errors.name &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;feedback&quot;</span>&gt;</span>&#123;props.errors.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">          &lt;button type=<span class="string">&quot;submit&quot;</span>&gt;Submit&lt;/button&gt;</span><br><span class="line">        &lt;/form&gt;</span><br><span class="line">      )&#125;</span><br><span class="line">    &lt;/Formik&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>针对内部的表单，render方法会传入一个props，props包括了values，errors，handleSubmit，handleChange，handleBlur等属性（更详细的内容参见<a target="_blank" rel="noopener" href="https://jaredpalmer.com/formik/docs/api/formik#dirty-boolean">完整props</a>，其中：</p>
+<ul>
+<li>values：对应的就是表单各项数据</li>
+<li>errors：validate所返回的表单校验后的错误信息</li>
+<li>touched：表示表单内的控件是否已经被操作过</li>
+<li>handleSubmit：是表单触发提交事件后的formik对提交流程处理事件，规则校验就在其中</li>
+<li>handleChane: 更改表单数据的事件</li>
+<li>handleBlur: 控件失去焦点后的操作事件，会进行对表单进行规则校验的流程</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;Formik</span><br><span class="line">          initialValues=&#123;&#123;</span><br><span class="line">            name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            gender: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            age: <span class="string">&quot;&quot;</span></span><br><span class="line">          &#125;&#125;</span><br><span class="line">          validate=&#123;<span class="function"><span class="params">values</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> errors = &#123;&#125;;</span><br><span class="line">            <span class="keyword">if</span> (values.name.length === <span class="number">0</span>) &#123;</span><br><span class="line">              errors.name = <span class="string">&quot;Name can not be empty&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (values.gender.length === <span class="number">0</span>) &#123;</span><br><span class="line">              errors.gender = <span class="string">&quot;You must choose a gender&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (values.age &lt;= <span class="number">0</span> || values.age % <span class="number">1</span> !== <span class="number">0</span>) &#123;</span><br><span class="line">              errors.age = <span class="string">&quot;Age must be a Positive Integer&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> errors;</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          onSubmit=&#123;<span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(values)</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          render=&#123;<span class="function"><span class="params">props</span> =&gt;</span></span><br><span class="line">            &lt;form onSubmit=&#123;props.handleSubmit&#125;&gt;</span><br><span class="line">              &lt;div className=<span class="string">&quot;content&quot;</span>&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                  &lt;label&gt;姓名： &lt;/label&gt;<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">id</span>=<span class="string">&quot;name&quot;</span> <span class="attr">name</span>=<span class="string">&quot;name&quot;</span> <span class="attr">value</span>=<span class="string">&#123;props.values.name&#125;</span></span></span></span><br><span class="line"><span class="xml">                                            onChange=&#123;props.handleChange&#125; onBlur=&#123;props.handleBlur&#125;/&gt;</span></span><br><span class="line">&#123;props.touched.name &amp;&amp; props.errors.name &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;props.errors.name&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                  &lt;label&gt;性别： &lt;/label&gt;</span><br><span class="line">                  &lt;input type=<span class="string">&quot;radio&quot;</span> id=<span class="string">&quot;male&quot;</span> value=<span class="string">&quot;male&quot;</span> name=<span class="string">&quot;gender&quot;</span> onChange=&#123;props.handleChange&#125;</span><br><span class="line">                         onBlur=&#123;props.handleBlur&#125;/&gt; <span class="xml"><span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;male&quot;</span>&gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line">                  &lt;input type=<span class="string">&quot;radio&quot;</span> id=<span class="string">&quot;female&quot;</span> value=<span class="string">&quot;female&quot;</span> name=<span class="string">&quot;gender&quot;</span> onChange=&#123;props.handleChange&#125;</span><br><span class="line">                         onBlur=&#123;props.handleBlur&#125;/&gt; <span class="xml"><span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;female&quot;</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line">&#123;props.touched.gender &amp;&amp; props.errors.gender &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;props.errors.gender&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                  &lt;label&gt;年龄： &lt;/label&gt;<span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;number&quot;</span> <span class="attr">id</span>=<span class="string">&quot;age&quot;</span> <span class="attr">name</span>=<span class="string">&quot;age&quot;</span> <span class="attr">value</span>=<span class="string">&#123;props.values.age&#125;</span></span></span></span><br><span class="line"><span class="xml">                                            onChange=&#123;props.handleChange&#125; onBlur=&#123;props.handleBlur&#125;/&gt;</span></span><br><span class="line">&#123;props.touched.age &amp;&amp; props.errors.age &amp;&amp; <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>&#123;props.errors.age&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>&#125;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div className=<span class="string">&quot;submit-area&quot;</span>&gt;</span><br><span class="line">                  &lt;button type=<span class="string">&quot;submit&quot;</span>&gt;提交&lt;/button&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">            &lt;/form&gt;</span><br><span class="line">          &#125;</span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>但是我们依旧可以看出在每一个输入控件的地方，都重复的绑定了onChange，onBlur等事件，并且每个输入错误信息的方式都是很重复的，这显得有点累赘。但是好在formik提交了Form，Field，ErrorMessage等封装好的组件，用于减少重复的工作，代码如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;Formik</span><br><span class="line">          ......</span><br><span class="line">        <span class="comment">//same as before</span></span><br><span class="line">          render=&#123;<span class="function"><span class="params">props</span> =&gt;</span></span><br><span class="line">            &lt;Form&gt;</span><br><span class="line">              &lt;div className=<span class="string">&quot;content&quot;</span>&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                  &lt;label&gt;姓名： &lt;<span class="regexp">/label&gt;&lt;Field name=&quot;name&quot;/</span>&gt;</span><br><span class="line">&lt;ErrorMessage name=<span class="string">&quot;name&quot;</span>/&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                  &lt;label&gt;性别： &lt;/label&gt;</span><br><span class="line">                  &lt;Field name=<span class="string">&quot;gender&quot;</span> render=&#123;<span class="function">(<span class="params">&#123;field&#125;</span>) =&gt;</span></span><br><span class="line">                    &lt;input type=<span class="string">&quot;radio&quot;</span> name=&#123;field.name&#125; value=<span class="string">&quot;male&quot;</span> checked=&#123;field.value === <span class="string">&quot;male&quot;</span>&#125;</span><br><span class="line">                           onChange=&#123;field.onChange&#125;</span><br><span class="line">                           onBlur=&#123;field.onBlur&#125;/&gt;</span><br><span class="line">                  &#125;/&gt;</span><br><span class="line">                  &lt;label htmlFor=<span class="string">&quot;male&quot;</span>&gt;男&lt;/label&gt;</span><br><span class="line">                  &lt;Field name=<span class="string">&quot;gender&quot;</span> render=&#123;<span class="function">(<span class="params">&#123;field&#125;</span>) =&gt;</span></span><br><span class="line">                    &lt;input type=<span class="string">&quot;radio&quot;</span> name=&#123;field.name&#125; value=<span class="string">&quot;female&quot;</span> checked=&#123;field.value === <span class="string">&quot;female&quot;</span>&#125;</span><br><span class="line">                           onChange=&#123;field.onChange&#125;</span><br><span class="line">                           onBlur=&#123;field.onBlur&#125;/&gt;</span><br><span class="line">                  &#125;/&gt; <span class="xml"><span class="tag">&lt;<span class="name">label</span> <span class="attr">htmlFor</span>=<span class="string">&quot;female&quot;</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span></span><br><span class="line">&lt;ErrorMessage name=<span class="string">&quot;gender&quot;</span>/&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                  &lt;label&gt;年龄： &lt;<span class="regexp">/label&gt;&lt;Field name=&quot;age&quot;/</span>&gt;</span><br><span class="line">&lt;ErrorMessage name=<span class="string">&quot;age&quot;</span>/&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div className=<span class="string">&quot;submit-area&quot;</span>&gt;</span><br><span class="line">                  &lt;button type=<span class="string">&quot;submit&quot;</span>&gt;提交&lt;/button&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">            &lt;/Form&gt;</span><br><span class="line">          &#125;</span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，使用formik提供的组件还能进一步简化代码，通过对比可以看出，Form组件想到与form加上onSubmit；ErrorMessage组件就是将touched,errors等一系列判断包裹了起来；Field组件则是封装了onChange，onBlur，value等属性，需要注意的是对于radio，checkbox，select等控件需要单独做一些特殊处理，通常使用其render方法来自定义，除此之外，因为有了render方法，使得Field也能很好的和其他的第三方封装的控件结合。</p>
+<p> 此外，formik针对数组类型属性也有很好的支持，现在让我们在表单里面加一个字段，表单样式如下： </p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/10769576-49fa1d42d3cb6b7b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/520/format/webp" alt="img"> </p>
+<p>我们为表单添加了一个addresses字段，它是一个存储地址的数据，它的验证规则是至少有一个非空的字段。</p>
+<p>formik提供了一个FieldArray的组件专门处理数组类型字段，代码如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">&lt;Formik</span><br><span class="line">          initialValues=&#123;&#123;</span><br><span class="line">            name: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            gender: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            age: <span class="string">&quot;&quot;</span>,</span><br><span class="line">            addresses: [<span class="string">&quot;&quot;</span>]</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          validate=&#123;<span class="function"><span class="params">values</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> errors = &#123;&#125;;</span><br><span class="line">            <span class="keyword">if</span> (values.name.length === <span class="number">0</span>) &#123;</span><br><span class="line">              errors.name = <span class="string">&quot;Name can not be empty&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (values.gender.length === <span class="number">0</span>) &#123;</span><br><span class="line">              errors.gender = <span class="string">&quot;You must choose a gender&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (values.age &lt;= <span class="number">0</span> || values.age % <span class="number">1</span> !== <span class="number">0</span>) &#123;</span><br><span class="line">              errors.age = <span class="string">&quot;Age must be a Positive Integer&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> addresses = values.addresses.filter(<span class="function"><span class="params">address</span> =&gt;</span> address.trim() !== <span class="string">&quot;&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (addresses.length === <span class="number">0</span>) &#123;</span><br><span class="line">              errors.addresses = <span class="string">&quot;Addresses must have 1 address at least&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> errors;</span><br><span class="line">          &#125;&#125;</span><br><span class="line">       </span><br><span class="line">          onSubmit=&#123;<span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(values)</span><br><span class="line">          &#125;&#125;</span><br><span class="line">          render=&#123;<span class="function"><span class="params">props</span> =&gt;</span></span><br><span class="line">            &lt;Form&gt;</span><br><span class="line">              &lt;div className=<span class="string">&quot;content&quot;</span>&gt;</span><br><span class="line">              ......</span><br><span class="line">               <span class="comment">// same as before</span></span><br><span class="line">                &lt;div&gt;</span><br><span class="line">                  &lt;label&gt;地址： &lt;/label&gt;</span><br><span class="line">                  &lt;FieldArray name=<span class="string">&quot;addresses&quot;</span> render=&#123;<span class="function"><span class="params">arrayHelper</span> =&gt;</span></span><br><span class="line">                    &lt;div&gt;</span><br><span class="line">                      &#123;props.values.addresses.map(<span class="function">(<span class="params">address, index</span>) =&gt;</span></span><br><span class="line">                        &lt;div className=<span class="string">&quot;address&quot;</span>&gt;</span><br><span class="line">                          &lt;Field name=&#123;<span class="string">`addresses.<span class="subst">$&#123;index&#125;</span>`</span>&#125;/&gt;</span><br><span class="line">                          &lt;div className=<span class="string">&quot;address_add&quot;</span> onClick=&#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">                            arrayHelper.push(<span class="string">&quot;&quot;</span>)</span><br><span class="line">                          &#125;&#125;&gt;+</span><br><span class="line">                          &lt;/div&gt;</span><br><span class="line">                        &lt;/div&gt;</span><br><span class="line">                      )&#125;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                  &#125;/&gt;</span><br><span class="line">                  &lt;ErrorMessage name=<span class="string">&quot;addresses&quot;</span> component=<span class="string">&quot;div&quot;</span> className=<span class="string">&quot;error&quot;</span>/&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">                &lt;div className=<span class="string">&quot;submit-area&quot;</span>&gt;</span><br><span class="line">                  &lt;button type=<span class="string">&quot;submit&quot;</span>&gt;提交&lt;/button&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">              &lt;/div&gt;</span><br><span class="line">           &lt;/Form&gt;</span><br><span class="line">          &#125;</span><br><span class="line">        /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到，使用FieldArray时，它会提供一个arrayHelper的参数，我们可以通过arrayHelper很方便去操作数组的数组，如push，pop等等（更详细的参见<a target="_blank" rel="noopener" href="https://jaredpalmer.com/formik/docs/api/fieldarray#fieldarray-helpers">完整arrayHelper API</a>）</p>
+<p>到此为止，就是formik的基本功能的介绍了。</p>
+<h2 id="1-2-注入Yup"><a href="#1-2-注入Yup" class="headerlink" title="1.2 注入Yup"></a>1.2 注入Yup</h2><p>虽然formik已经极大的方便了表单的操作，但是我们还是可以看到在做表单验证的时候，写的代码还是比较繁琐，这个时候就需要yup出场了，yup的专长就是做规则校验。并且聪明的formik作者在设计formik的时候就让其很好的支持yup了。</p>
+<p> yup的官方介绍：<code>Yup is a JavaScript object schema validator and object parser.</code> </p>
+<h3 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -S yup</span><br></pre></td></tr></table></figure>
+
+<p>Yup总是依赖Promise全局对象来处理异步值以及Set和Map。对于不支持这些功能的浏览器，需要包含polyfill，例如core js：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#39;core-js&#x2F;es6&#x2F;promise&#39;;</span><br><span class="line">import &#39;core-js&#x2F;es6&#x2F;set&#39;;</span><br><span class="line">import &#39;core-js&#x2F;es6&#x2F;map&#39;;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用TypeScript，建议安装Yup类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -D @types&#x2F;yup</span><br></pre></td></tr></table></figure>
+
+<p> 在Formik组件里有一个名为validationSchema的prop，这个就是为yup留出的接口。</p>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> yup <span class="keyword">from</span> <span class="string">&#x27;yup&#x27;</span>; <span class="comment">// for everything</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//没有yup的情况</span></span><br><span class="line">&lt;Formik</span><br><span class="line">          validate=&#123;<span class="function"><span class="params">values</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">let</span> errors = &#123;&#125;;</span><br><span class="line">            <span class="keyword">if</span> (values.name.length === <span class="number">0</span>) &#123;</span><br><span class="line">              errors.name = <span class="string">&quot;Name can not be empty&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (values.gender.length === <span class="number">0</span>) &#123;</span><br><span class="line">              errors.gender = <span class="string">&quot;You must choose a gender&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (values.age &lt;= <span class="number">0</span> || values.age % <span class="number">1</span> !== <span class="number">0</span>) &#123;</span><br><span class="line">              errors.age = <span class="string">&quot;Age must be a Positive Integer&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">let</span> addresses = values.addresses.filter(<span class="function"><span class="params">address</span> =&gt;</span> address.trim() !== <span class="string">&quot;&quot;</span>);</span><br><span class="line">            <span class="keyword">if</span> (addresses.length === <span class="number">0</span>) &#123;</span><br><span class="line">              errors.addresses = <span class="string">&quot;Addresses must have 1 address at least&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> errors;</span><br><span class="line">          &#125;&#125;</span><br><span class="line">       <span class="comment">//......</span></span><br><span class="line">        /&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//使用yup的情况</span></span><br><span class="line"> &lt;Formik</span><br><span class="line">          validationSchema=&#123;Yup.object().shape(&#123;</span><br><span class="line">            name: Yup.string().trim().required(<span class="string">&quot;Name can not be empty&quot;</span>),</span><br><span class="line">            gender: Yup.string().required(<span class="string">&quot;You must choose a gender&quot;</span>),</span><br><span class="line">            age: Yup.number().moreThan(<span class="number">0</span>, <span class="string">&quot;Age must be greater than 0&quot;</span>).integer(<span class="string">&quot;Age must be a integer&quot;</span>),</span><br><span class="line">            addresses: Yup.array().compact().min(<span class="number">1</span>, <span class="string">&quot;Addresses must have 1 address at least&quot;</span>)</span><br><span class="line">          &#125;)&#125;</span><br><span class="line">      <span class="comment">//......</span></span><br><span class="line">       /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>可以看到使用Yup后，不管是从代码量，还是可读性来看都提交了很多，尤其是在表单非常复杂时，这之间的优化会非常的明显。</p>
+<p>可以看到Yup的操作非常的语义化，所以学习成本非常的低，你只需要知道它的api，就能很轻易的使用它，所以对Yup的使用不再赘述，详细信息参见Yup文档。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/06/29/formik%E5%92%8Cyup/" data-id="ckdzwmbd800040wv0ez795hu1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/12/nuxt%E4%BB%8B%E7%BB%8D/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          nuxt介绍
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/06/28/rn%E4%B8%AD%E7%9A%84%E6%89%8B%E5%8A%BF%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">rn中的手势系统</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/hhh/">hhh</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAreact-hooks/">深入浅出react hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/22/nextJS/">nextJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

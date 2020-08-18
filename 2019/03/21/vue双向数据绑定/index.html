@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>vue双向数据绑定 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="vue双向绑定的原理a) 页面–&gt;数据view更新data只需要添加DOM事件监听即可，比如input标签监听 ‘input’ 事件就可以实现 b) 数据–&gt;页面是通过数据劫持 + 发布者-订阅者模式的方式来实现的 (1).数据劫持vue是通过Object.defineProperty()来实现数据劫持的。(vue3.0已换成proxy来实现数据劫持) 1234567891011121">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue双向数据绑定">
+<meta property="og:url" content="http://yoursite.com/2019/03/21/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vue双向绑定的原理a) 页面–&gt;数据view更新data只需要添加DOM事件监听即可，比如input标签监听 ‘input’ 事件就可以实现 b) 数据–&gt;页面是通过数据劫持 + 发布者-订阅者模式的方式来实现的 (1).数据劫持vue是通过Object.defineProperty()来实现数据劫持的。(vue3.0已换成proxy来实现数据劫持) 1234567891011121">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/2019/03/21/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/1547815009579.png">
+<meta property="article:published_time" content="2019-03-21T04:37:26.000Z">
+<meta property="article:modified_time" content="2020-03-29T04:41:36.098Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2019/03/21/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/1547815009579.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.2"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vue双向数据绑定" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/03/21/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/" class="article-date">
+  <time datetime="2019-03-21T04:37:26.000Z" itemprop="datePublished">2019-03-21</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/vue/">vue</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vue双向数据绑定
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="vue双向绑定的原理"><a href="#vue双向绑定的原理" class="headerlink" title="vue双向绑定的原理"></a>vue双向绑定的原理</h2><h3 id="a-页面–-gt-数据"><a href="#a-页面–-gt-数据" class="headerlink" title="a) 页面–&gt;数据"></a>a) 页面–&gt;数据</h3><p>view更新data只需要添加DOM事件监听即可，比如input标签监听 ‘input’ 事件就可以实现</p>
+<h3 id="b-数据–-gt-页面"><a href="#b-数据–-gt-页面" class="headerlink" title="b) 数据–&gt;页面"></a>b) 数据–&gt;页面</h3><p>是通过数据劫持 + 发布者-订阅者模式的方式来实现的</p>
+<h4 id="1-数据劫持"><a href="#1-数据劫持" class="headerlink" title="(1).数据劫持"></a>(1).数据劫持</h4><p>vue是通过Object.defineProperty()来实现数据劫持的。(vue3.0已换成proxy来实现数据劫持)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> book = &#123;&#125;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(book, <span class="string">&#x27;name&#x27;</span>, &#123;</span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">        name = value;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;你取了一个书名叫做&#x27;</span> + value);</span><br><span class="line">    &#125;,</span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&#x27;《&#x27;</span> + name + <span class="string">&#x27;》&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">book.name = <span class="string">&#x27;vue权威指南&#x27;</span>;  <span class="comment">// 你取了一个书名叫做vue权威指南</span></span><br><span class="line">book.name = <span class="string">&#x27;vue权威指南2&#x27;</span>;  <span class="comment">// 你取了一个书名叫做vue权威指南</span></span><br><span class="line"><span class="built_in">console</span>.log(book.name);  <span class="comment">// 《vue权威指南》</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-发布者订阅模式"><a href="#2-发布者订阅模式" class="headerlink" title="(2).发布者订阅模式"></a>(2).发布者订阅模式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//订阅器</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dept</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.watchers = [];</span><br><span class="line">&#125;</span><br><span class="line">Dept.prototype.addWatcher = <span class="function"><span class="keyword">function</span> (<span class="params">watcher</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.watchers.push(watcher);</span><br><span class="line">&#125;</span><br><span class="line">Dept.prototype.notifyWatcher = <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.watchers.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">watcher</span>) </span>&#123;</span><br><span class="line">        watcher.update(value);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//订阅者</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Watcher</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line">Watcher.prototype.update = <span class="function"><span class="keyword">function</span>(<span class="params">value</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>.name+<span class="string">&quot;接收到新天气&quot;</span>+value+<span class="string">&quot;，准备干啥&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建几个订阅者</span></span><br><span class="line"><span class="keyword">var</span> xiaoming = <span class="keyword">new</span> Watcher(<span class="string">&quot;小明&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> xiaohong = <span class="keyword">new</span> Watcher(<span class="string">&quot;小红&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> xiaohei = <span class="keyword">new</span> Watcher(<span class="string">&quot;小黑&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//创建一个订阅器</span></span><br><span class="line"><span class="keyword">var</span> dept = <span class="keyword">new</span> Dept();</span><br><span class="line">dept.addWatcher(xiaoming);</span><br><span class="line">dept.addWatcher(xiaohong);</span><br><span class="line">dept.addWatcher(xiaohei);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//数据劫持常用方案：Object.defineProperty(Vue 2.0)    Proxy(Vue 3.0)</span></span><br><span class="line"><span class="comment">//数据劫持的主要作用：劫持数据的变化</span></span><br><span class="line"><span class="keyword">var</span> weatherStation = &#123;&#125;;</span><br><span class="line"><span class="built_in">Object</span>.defineProperty(weatherStation, <span class="string">&quot;weather&quot;</span>, &#123;</span><br><span class="line">    <span class="comment">//当在外部给book的name属性赋值的时候，会执行set</span></span><br><span class="line">    set: <span class="function"><span class="keyword">function</span> (<span class="params">value</span>) </span>&#123;</span><br><span class="line">        name = value;</span><br><span class="line">        <span class="comment">//一旦天气变化，订阅器通知所有的观察者去更新</span></span><br><span class="line">        dept.notifyWatcher(value);</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="comment">//当在外部获取book的name属性的时候，会执行get</span></span><br><span class="line">    get: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;当前天气是&quot;</span> + name;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">weatherStation.weather = <span class="string">&quot;晴天&quot;</span>;</span><br><span class="line">weatherStation.weather = <span class="string">&quot;冰雹&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-数据绑定的实现流程"><a href="#3-数据绑定的实现流程" class="headerlink" title="(3).数据绑定的实现流程"></a>(3).数据绑定的实现流程</h4><p>首先要对数据进行劫持监听，所以我们需要设置一个监听器Observer，用来监听所有属性。如果属性发上变化了，就需要告诉订阅者Watcher看是否需要更新。</p>
+<p>因为订阅者是有很多个，所以我们需要有一个消息订阅器Dep来专门收集这些订阅者，然后在监听器Observer和订阅者Watcher之间进行统一管理的。</p>
+<p>接着，我们还需要有一个指令解析器Compile，对每个节点元素进行扫描和解析，将相关指令对应初始化成一个订阅者Watcher，并替换模板数据或者绑定相应的函数，此时当订阅者Watcher接收到相应属性的变化，就会执行对应的更新函数，从而更新视图。</p>
+<p>因此接下去我们执行以下3个步骤，实现数据的双向绑定：</p>
+<blockquote>
+<p>1.监听器Observer，用来劫持并监听所有属性，如果有变动的，就通知所有订阅者。</p>
+<p>2.订阅者Watcher，可以收到属性的变化通知并执行相应的函数，从而更新视图。</p>
+<p>3.解析器Compile，可以扫描和解析每个节点的相关指令，并根据初始化模板数据以及初始化相应的订阅者</p>
+</blockquote>
+<p><img src="vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/1547815009579.png" alt="1547815009579"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/03/21/vue%E5%8F%8C%E5%90%91%E6%95%B0%E6%8D%AE%E7%BB%91%E5%AE%9A/" data-id="ckdzwmbdj000r0wv05vrcbj26" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/03/21/hybird%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF%E9%80%89%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          hybird开发技术选型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/01/21/Git%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git基本使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/angular/">angular</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/javascript/">javascript</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/react/">react</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue/">vue</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">December 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/18/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/">我的博客</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/14/hhh/">hhh</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/13/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/27/%E6%B7%B1%E5%85%A5%E6%B5%85%E5%87%BAreact-hooks/">深入浅出react hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2020/03/22/nextJS/">nextJS</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
